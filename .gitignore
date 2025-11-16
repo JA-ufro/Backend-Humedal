@@ -1,0 +1,64 @@
+# =========================================
+# Reglas Generales y de Sistema Operativo
+# =========================================
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# =========================================
+# Reglas para IDEs y Editores de Código
+# =========================================
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# =========================================
+# Reglas para Frontend (Node.js / Vite)
+# =========================================
+# Dependencias de Node
+frontend/node_modules/
+
+# Carpeta de build/distribución
+frontend/dist/
+
+# Archivos de logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Archivos de entorno (¡nunca subir secrets o API Keys!)
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Cache de Vite
+frontend/.vite/
+
+# =========================================
+# Reglas para Backend (Java / Maven / Spring Boot)
+# =========================================
+# Archivos de build y output de Maven
+backend/target/
+backend/*.jar
+backend/*.war
+
+# Logs de errores de Java
+backend/hs_err_pid*
+
+# Carpeta del wrapper de Maven
+backend/.mvn/
+
+# Archivos temporales de Maven
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
