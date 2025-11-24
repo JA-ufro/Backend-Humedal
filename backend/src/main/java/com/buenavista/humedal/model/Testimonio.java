@@ -2,10 +2,14 @@ package com.buenavista.humedal.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "testimonio")
 public class Testimonio {
 

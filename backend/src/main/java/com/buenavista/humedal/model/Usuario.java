@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -26,6 +27,9 @@ public class Usuario implements UserDetails {
     @Column(nullable=false)
     private String password;
 
+    @Column(nullable = false)
+    private String role = "ROLE_ADMIN";
+
     public Usuario() {}
 
     public Usuario(String username, String password) {
@@ -42,8 +46,7 @@ public class Usuario implements UserDetails {
     // UserDetails methods
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // En este ejemplo simple no manejamos roles, devolvemos lista vacía.
-        return Collections.emptyList();
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 
     @Override

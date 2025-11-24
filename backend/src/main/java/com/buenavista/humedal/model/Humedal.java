@@ -2,10 +2,15 @@ package com.buenavista.humedal.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "humedal")
 public class Humedal {
 
@@ -32,7 +37,7 @@ public class Humedal {
     private String imagenPrincipal; // Guardaremos el nombre del archivo, ej: "humedal-carmen.jpg"
 
     @OneToMany(mappedBy = "humedal", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Especie> especie;
+    private List<Especie> especies;
 
     @OneToMany(mappedBy = "humedal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Testimonio> testimonios;
