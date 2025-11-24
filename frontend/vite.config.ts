@@ -7,5 +7,5 @@ export default defineConfig({
   // ¡IMPORTANTE! Se ha establecido la base para el despliegue en GitHub Pages.
   // Si tu repositorio en GitHub tiene un nombre diferente a 'testpage',
   // deberás actualizar este valor para que coincida.
-  base: '/FullStack-Humedal/', 
+  base: '/Backend-Humedal/', 
 })
