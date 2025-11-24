@@ -2,9 +2,13 @@ package com.buenavista.humedal.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "especie")
 public class Especie{
 
@@ -20,6 +24,9 @@ public class Especie{
 
     @Enumerated(EnumType.STRING)
     private TipoEspecie tipo;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoConservacion estadoConservacion;
 
     private String imagenUrl; // Nombre del archivo, ej: "tagua.jpg"
 
