@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: humedal-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: humedal_db
+      POSTGRES_USER: humedal_user
+      POSTGRES_PASSWORD: Humedal_contexto_PJ89
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: humedal-backend
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/humedal_db
+      SPRING_DATASOURCE_USERNAME: humedal_user
+      SPRING_DATASOURCE_PASSWORD: Humedal_contexto_PJ89
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: humedal-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  pgdata:

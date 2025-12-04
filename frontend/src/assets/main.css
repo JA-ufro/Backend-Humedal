@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+:root {
+  --color-verde-oscuro: #2D543B;
+  --color-verde-medio: #4a8158;
+  --color-verde-claro: #A3D4AB;
+  --color-tierra-clara: #F8FBF6;
+  --color-texto-oscuro: #222222;
+  --color-texto-secundario: #555;
+  --color-acento-arena: #E7B87E;
+  --color-blanco: #FFFFFF;
+
+  --font-principal: 'Lato', sans-serif;
+  --shadow-sutil: 0 10px 30px -15px rgba(45, 84, 59, 0.2);
+}
+
+body {
+ font-family: var(--font-principal);
+ margin: 0;
+ background-color: var(--color-tierra-clara);
+ color: var(--color-texto-oscuro);
+ line-height: 1.6;
+ font-size: 16px;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-smoothing: grayscale;
+ overflow-x: hidden;
+ width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-verde-oscuro);
+  font-family: var(--font-principal);
+  font-weight: 700;
+}
+
+a {
+  color: var(--color-verde-medio);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-verde-oscuro);
+}
+
+p {
+  color: var(--color-texto-secundario);
+}
+
+main {
+  width: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
