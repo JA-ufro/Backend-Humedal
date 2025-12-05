@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:15
+    image: postgres:15.4
     container_name: humedal-postgres
     restart: unless-stopped
     environment:
@@ -23,7 +23,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/humedal_db
       SPRING_DATASOURCE_USERNAME: humedal_user
       SPRING_DATASOURCE_PASSWORD: Humedal_contexto_PJ89
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
     ports:
       - "8080:8080"
 

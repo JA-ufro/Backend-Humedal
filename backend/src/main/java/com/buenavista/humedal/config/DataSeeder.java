@@ -21,7 +21,7 @@ public class DataSeeder {
                 admin.setUsername(adminUsername);
                 admin.setPassword(passwordEncoder.encode(adminPassword));
                 userRepository.save(admin);
-                System.out.println("Usuario admin creado: 'admin' / 'password123' (contraseña encriptada en BD)");
+                System.out.println("Usuario admin creado.");
             } else {
                 System.out.println("Usuario admin ya existe, saltando seed.");
             }
