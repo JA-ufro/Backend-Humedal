@@ -40,7 +40,7 @@ services:
       JWT_EXPIRATIONMILLIS: 3600000
 
       # CORS
-      APP_FRONTEND_ORIGIN: http://localhost:5173
+      APP_FRONTEND_ORIGIN: http://200.13.5.6:5173
 
     ports:
       - "8080:8080"
