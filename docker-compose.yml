@@ -7,6 +7,11 @@ services:
       POSTGRES_DB: humedal_db
       POSTGRES_USER: humedal_user
       POSTGRES_PASSWORD: Humedal_contexto_PJ89
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U humedal_user -d humedal_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     ports:
       - "5432:5432"
     volumes:
@@ -17,13 +22,26 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: humedal-backend
+    restart: unless-stopped
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/humedal_db
       SPRING_DATASOURCE_USERNAME: humedal_user
       SPRING_DATASOURCE_PASSWORD: Humedal_contexto_PJ89
+
+      # Seguridad / Flyway / JPA
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
+      SPRING_FLYWAY_ENABLED: "true"
+
+      # JWT
+      JWT_SECRET: K7I0q1jvV2d8NcR4mT8BxP9zQ4nH6uL3xM0fZ2sY1vA=
+      JWT_EXPIRATIONMILLIS: 3600000
+
+      # CORS
+      APP_FRONTEND_ORIGIN: http://localhost:5173
+
     ports:
       - "8080:8080"
 
@@ -32,6 +50,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: humedal-frontend
+    restart: unless-stopped
     depends_on:
       - backend
     ports:
