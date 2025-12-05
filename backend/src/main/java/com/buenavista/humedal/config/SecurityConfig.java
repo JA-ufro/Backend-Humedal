@@ -58,13 +58,21 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints
+                        // Endpoint Publico de Autenticación
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/humedales/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
 
+                        // Endpoint Publicos de Humedales
+                        .requestMatchers(HttpMethod.GET, "/api/humedales/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/especies/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/testimonios/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
                         // H2 console (dev) permit
                         .requestMatchers("/h2-console/**").permitAll()
+
+                        // Solo ADMIN
+                        .requestMatchers(HttpMethod.POST, "/api/especies/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/especies/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/especies/**").hasRole("ADMIN")
 
                         // all other requests require authentication
                         .anyRequest().authenticated()
